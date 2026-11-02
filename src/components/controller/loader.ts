@@ -1,9 +1,5 @@
 import { Endpoint } from '../../types';
-import type {
-    ApiOptions,
-    ApiCallback,
-    RequestParams,
-} from '../../types';
+import type { ApiOptions, ApiCallback, RequestParams } from '../../types';
 
 class Loader {
     private baseLink: string;
@@ -43,15 +39,10 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<T>(
-        method: 'GET',
-        endpoint: Endpoint,
-        callback: ApiCallback<T>,
-        options: ApiOptions = {}
-    ): void {
+    private load<T>(method: 'GET', endpoint: Endpoint, callback: ApiCallback<T>, options: ApiOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-             .then((res): Promise<T> => res.json())
+            .then((res): Promise<T> => res.json())
             .then((data) => callback(data))
             .catch((err: unknown) => console.error(err));
     }

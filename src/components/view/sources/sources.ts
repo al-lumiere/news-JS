@@ -1,7 +1,6 @@
 import './sources.css';
 import type { Source } from '../../../types';
 
-
 class Sources {
     public draw(data: ReadonlyArray<Pick<Source, 'id' | 'name'>>): void {
         const fragment = document.createDocumentFragment();
@@ -15,11 +14,8 @@ class Sources {
         data.forEach((item) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
 
-            const name = sourceClone.querySelector<HTMLElement>(
-                '.source__item-name'
-            );
-            const source =
-                sourceClone.querySelector<HTMLElement>('.source__item');
+            const name = sourceClone.querySelector<HTMLElement>('.source__item-name');
+            const source = sourceClone.querySelector<HTMLElement>('.source__item');
 
             if (!name || !source) {
                 return;
